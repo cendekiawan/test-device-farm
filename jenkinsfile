@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Invoke API') {
+            steps {
+                script {
+                    def apiKey = "xmOo8Z5tp6.d9DQNq6nhbC9vxy2tDr32tfVBxUl6wKhpxSAiHtE"
+                    def fileAbsolutePath = "Instagram_312.0.0.0.53_Apkpure.apk"
+
+                    def endpoint = "https://farmdemo.visiumlabs.com/api/v1/apps"
+
+                    def formData = [
+                        file: fileAbsolutePath
+                    ]
+
+                    def headers = [
+                        'X-VisiumFarm-Api-Key': apiKey
+                    ]
+
+                    def response = httpRequest(
+                        url: endpoint,
+                        httpMode: 'POST',
+                        requestBody: formData,
+                        customHeaders: headers
+                    )
+
+                    echo "Response status code: ${response.status}"
+                    echo "Response body: ${response.content}"
+                }
+            }
+        }
+    }
+}
