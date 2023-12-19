@@ -21,9 +21,9 @@ else
 fi
 
 
-# step 2: get all devide id of Android
+# step 2: get all devide id of iOS
 # Make the GET request and capture the JSON response
-response=$(curl -s -X GET https://farmdemo.visiumlabs.com/api/devices?os=Android \
+response=$(curl -s -X GET https://farmdemo.visiumlabs.com/api/devices?os=iOS \
 -H "Content-Type: application/json" \
 -H "X-VisiumFarm-Api-Key: xmOo8Z5tp6.d9DQNq6nhbC9vxy2tDr32tfVBxUl6wKhpxSAiHtE")
 
@@ -37,7 +37,7 @@ echo "$ids"
 export ids=$ids
 
 
-# step 3: upload APK file and get the id of APK file
+# step 3: upload IPA file and get the id of IPA file
 # Set the necessary variables
 API_KEY="xmOo8Z5tp6.d9DQNq6nhbC9vxy2tDr32tfVBxUl6wKhpxSAiHtE"
 FILE_PATH="testingVisium.ipa"
@@ -58,7 +58,7 @@ echo "The extracted appId is: $appId"
 
 export appId=$appId
 
-# step 4: Install the APK in all Android devices
+# step 4: Install the IPA in all iOS devices
 curl -X POST https://farmdemo.visiumlabs.com/api/apk/install \
 -H "Content-Type: application/json" \
 -H "X-VisiumFarm-Api-Key: xmOo8Z5tp6.d9DQNq6nhbC9vxy2tDr32tfVBxUl6wKhpxSAiHtE" \
