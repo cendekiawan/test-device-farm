@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Call API') {
             steps {
-                sh 'chmod oug+x ./visium.sh'
-                sh './visium.sh'
+                sh 'chmod oug+x ./visium-android.sh'
+                sh './visium-android.sh'
             }
         }
     }
